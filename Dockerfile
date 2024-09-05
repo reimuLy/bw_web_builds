@@ -16,6 +16,7 @@
 #
 #    Note: you can use --build-arg to specify the version to build:
 #    docker build -t web_vault_build --build-arg VAULT_VERSION=main .
+ARG SERVER_TAG
 FROM node:20-bookworm AS build
 RUN node --version && npm --version
 
@@ -46,8 +47,8 @@ RUN echo "sha256sum: $(sha256sum "bw_web_vault.tar.gz")"
 
 # We copy the final result as a separate empty image so there's no need to download all the intermediate steps
 # The result is included both uncompressed and as a tar.gz, to be able to use it in the docker images and the github releases directly
-ARG server_tag
-FROM vaultwarden/server:${server_tag}
+
+FROM vaultwarden/server:${SERVER_TAG}
 RUN mv /web-vault /web-vault-backup
 # hadolint ignore=DL3010
 COPY --from=build /bw_web_builds/bw_web_vault.tar.gz /bw_web_vault.tar.gz

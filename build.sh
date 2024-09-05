@@ -8,7 +8,7 @@ function loginEcr() {
 }
 
 function build() {
-  docker build . --file Dockerfile --tag "$image" --build-arg server_tag="${server_tag}"
+  docker build --file Dockerfile --build-arg SERVER_TAG=${server_tag} --tag "$image" .
 }
 
 function push() {
