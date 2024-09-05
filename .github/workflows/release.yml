@@ -15,7 +15,7 @@ jobs:
       - name: Build the Docker image
         run: docker build . --file Dockerfile-action --tag my-image-name:latest
       - name: Push the Docker image
-        run: docker run -e tag_name=${tag_name} -e ecr_ak=${ecr_ak} -e ecr_sk=${ecr_sk} -e ecr_account=${ecr_account} -e ecr_region=${ecr_region} -e ecr_host=${ecr_host} -v /var/run/docker.sock:/var/run/docker.sock my-image-name:latest
+        run: docker run -e server_tag=${server_tag} -e ecr_ak=${ecr_ak} -e ecr_sk=${ecr_sk} -e ecr_account=${ecr_account} -e ecr_region=${ecr_region} -e ecr_host=${ecr_host} -v /var/run/docker.sock:/var/run/docker.sock my-image-name:latest
         env:
           ecr_ak: ${{ secrets.AWS_ACCESS_KEY_ID }}
           ecr_sk: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
