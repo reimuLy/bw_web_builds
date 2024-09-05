@@ -15,6 +15,4 @@ function push() {
   docker push "$image-custom"
 }
 
-loginEcr
-build
-push
+loginEcr && build && push
