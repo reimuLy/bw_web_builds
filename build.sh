@@ -12,7 +12,7 @@ function build() {
 }
 
 function push() {
-  docker push "$image" + "-custom"
+  docker push "$image-custom"
 }
 
 loginEcr
