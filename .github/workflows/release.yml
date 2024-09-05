@@ -18,4 +18,4 @@ jobs:
           ecr_account: ${{ secrets.AWS_ACCOUNT }}
           ecr_region: ${{ secrets.AWS_REGION || 'cn-northwest-1' }}
           ecr_host: ${{ secrets.AWS_HOST || 'amazonaws.com.cn' }}
-          tag: ${{ env.tags }}
+          tag: ${{ github.ref }}
