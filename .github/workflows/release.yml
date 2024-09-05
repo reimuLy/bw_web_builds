@@ -8,6 +8,13 @@ on:
         required: true
 
 jobs:
+  log-the-inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "server_tag: $server_tag"
+        env:
+          server_tag: ${{ inputs.server_tag }}
   docker-build:
     runs-on: ubuntu-latest
     steps:
