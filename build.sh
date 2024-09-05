@@ -1,5 +1,5 @@
 #!/bin/bash
-source ECR_Auth.sh
+source ecr_auth.sh
 
 image="${ecr_account}.dkr.ecr.${ecr_region}.${ecr_host}/web-vault:${tag}"
 
