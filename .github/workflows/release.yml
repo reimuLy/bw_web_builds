@@ -2,6 +2,10 @@ name: Release
 
 on:
   workflow_dispatch:
+    inputs:
+      server_tag:
+        description: "server_tag"
+        required: true
 
 jobs:
   docker-build:
