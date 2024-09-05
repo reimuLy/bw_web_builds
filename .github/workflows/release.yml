@@ -2,6 +2,11 @@ name: Release
 
 on:
   workflow_dispatch:
+    inputs:
+      tags:
+        description: 'tags'
+        required: true
+        type: string
 
 jobs:
   docker-build:
@@ -18,4 +23,4 @@ jobs:
           ecr_account: ${{ secrets.AWS_ACCOUNT }}
           ecr_region: ${{ secrets.AWS_REGION || 'cn-northwest-1' }}
           ecr_host: ${{ secrets.AWS_HOST || 'amazonaws.com.cn' }}
-          tag: ${{ github.ref }}
+          tag: ${{ inputs.tags }}
