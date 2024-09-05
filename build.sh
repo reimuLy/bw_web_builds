@@ -1,7 +1,7 @@
 #!/bin/bash
 source ecr_auth.sh
 
-image="${ecr_account}.dkr.ecr.${ecr_region}.${ecr_host}/vaultwarden/web-vault:${tag}"
+image="${ecr_account}.dkr.ecr.${ecr_region}.${ecr_host}/vaultwarden/web-vault:${tag_name}"
 
 
 function loginEcr() {
