@@ -52,7 +52,7 @@ RUN echo "sha256sum: $(sha256sum bw_web_vault.tar.gz)"
 FROM vaultwarden/server:1.33.2-alpine
 WORKDIR /
 RUN rm -rf ./web-vault
-COPY --from=build /web-vault ./web-vault
+COPY --from=build /bw_web_builds/web-vault ./web-vault
 
 HEALTHCHECK --interval=60s --timeout=10s CMD ["/healthcheck.sh"]
 
