@@ -49,10 +49,11 @@ RUN echo "sha256sum: $(sha256sum bw_web_vault.tar.gz)"
 
 # We copy the final result as a separate empty image so there's no need to download all the intermediate steps
 # The result is included both uncompressed and as a tar.gz, to be able to use it in the docker images and the github releases directly
-FROM scratch
-# hadolint ignore=DL3010
-COPY --from=build /bw_web_builds/bw_web_vault.tar.gz /bw_web_vault.tar.gz
-COPY --from=build /bw_web_builds/web-vault /web-vault
+FROM vaultwarden/server:1.33.2-alpine
+WORKDIR /
+RUN rm -rf ./web-vault
+COPY --from=build /web-vault ./web-vault
 
-# Added so docker create works, can't actually run a scratch image
-CMD [""]
+HEALTHCHECK --interval=60s --timeout=10s CMD ["/healthcheck.sh"]
+
+CMD ["/start.sh"]
